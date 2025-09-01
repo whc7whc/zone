@@ -22,7 +22,7 @@ body::before {
     top: 0; left: 0;
     width: 100%;
     height: 100%;
-    background: url(/ToDoList/img/Planet.jpg) no-repeat center center / cover;
+    background: url(./img/Planet.jpg) no-repeat center center / cover;
     filter: blur(8px);
     opacity: 10; /* 控制霧度 */
     z-index: -1; /* 讓它在背景 */
