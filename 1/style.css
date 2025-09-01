@@ -1,0 +1,130 @@
+/* 背景樣式 */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: 'Lato', sans-serif;
+  background-image: url("/1/Into2.avif");
+}
+
+.background {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+
+  background-size: cover;
+  background-position: center;
+  filter: blur(4px) brightness(0.8);
+  z-index: -1;
+}
+
+/* 主標題文字動畫 */
+span {
+  position: relative;
+  color: white;
+  display: inline-block;
+  font-size: 26px;
+  text-shadow: 0 2px 10px, 0 2px 4px, 0 2px 4px rgba(0, 0, 0, 0.7);
+  animation: bounce 1s ease-in-out infinite alternate;
+  cursor: pointer;
+}
+
+@keyframes bounce {
+  0% { top: 0; }
+  100% { top: -10px; }
+}
+
+/* 延遲設定 */
+h1 span:nth-child(n) { animation-delay: calc(0.05s * var(--i)); }
+h1 span { --i: 1; }
+h1 span:nth-child(1)  { --i: 1; }
+h1 span:nth-child(2)  { --i: 2; }
+h1 span:nth-child(3)  { --i: 3; }
+h1 span:nth-child(4)  { --i: 4; }
+h1 span:nth-child(5)  { --i: 5; }
+h1 span:nth-child(6)  { --i: 6; }
+h1 span:nth-child(7)  { --i: 7; }
+h1 span:nth-child(9)  { --i: 8; }
+h1 span:nth-child(10) { --i: 9; }
+h1 span:nth-child(12) { --i: 10; }
+h1 span:nth-child(13) { --i: 11; }
+h1 span:nth-child(15) { --i: 12; }
+h1 span:nth-child(16) { --i: 13; }
+h1 span:nth-child(17) { --i: 14; }
+h1 span:nth-child(18) { --i: 15; }
+h1 span:nth-child(19) { --i: 16; }
+h1 span:nth-child(20) { --i: 17; }
+h1 span:nth-child(21) { --i: 18; }
+h1 span:nth-child(22) { --i: 19; }
+h1 span:nth-child(23) { --i: 20; }
+h1 span:nth-child(24) { --i: 21; }
+h1 span:nth-child(25) { --i: 22; }
+h1 span:nth-child(26) { --i: 23; }
+
+/* 卡片容器 */
+.card {
+  max-width: 500px;
+  width: 90%;
+  margin: 200px auto;
+  padding: 30px 25px;
+  background-color: rgba(255, 255, 255, 0.002); /* 保持原本的透明 */
+  border-radius: 16px;
+  box-shadow:  1px 1px rgba(0, 0, 0, 0.879), 0 6px 12px rgba(7, 81, 22, 0.646); /* 強化陰影，增強立體感 */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px); /* 背景模糊，讓卡片更突出 */
+}
+
+/* 按鈕 */
+button {
+  font-family: 'Anton', sans-serif;
+  font-size: 50px;
+  font-weight: bold;
+  color: #FFD700;  /* 保留金色字體來增強可讀性 */
+  padding: 20px 30px;
+  margin: 5px auto;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.233), 0 0 25px rgba(255, 215, 0, 0.7);
+   box-shadow:  5px 5px rgba(78, 23, 5, 0.879), 0 6px 12px rgba(152, 4, 4, 0.15); /* 強化陰影，增強立體感 */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  animation: fadeIn 1.5s ease-out;
+}
+/* 按鈕網格 */
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 14px;
+  margin-top: 20px;
+}
+        /* 木質按鈕樣式 */
+   /* 木質按鈕樣式 */
+.button-grid button {
+  padding: 12px 8px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #fcfbf996, #f4f3f385); /* 更深的米色到棕色漸層，作為未按下的顏色 */
+  color: #114103; /* 深色文字，更有可讀性 */
+  font-family: 'Anton', sans-serif;  /* 保持原字體 */
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(124, 220, 14, 0.3);
+}
+
+.button-grid button:hover {
+  background: linear-gradient(145deg, #f6f7f5, rgba(254, 255, 252, 0.856)); /* 更柔和的米色到棕色漸層，作為懸停的顏色 */
+  transform: translateY(-2px); /* 按鈕懸停浮動效果 */
+  border-color: rgba(139, 195, 74, 0.6);
+}
+
+/* 按鈕按下後的效果 */
+.button-grid button:active {
+  background: linear-gradient(145deg, #d1b88fc9, #ba9664a8); /* 更柔和的米色到棕色漸層，作為按下後的顏色 */
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.233), 0 0 25px rgba(255, 215, 0, 0.7);
+   box-shadow:  5px 5px rgba(5, 28, 10, 0.879), 0 6px 12px rgba(152, 4, 4, 0.15); /* 強化陰影，增強立體感 */
+  transform: translateY(2px); /* 按下時按鈕往下縮放 */
+ 
+}

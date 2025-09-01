@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 基本的全局樣式 */
+body {
+    font-family: Arial, sans-serif;  /* 設置字體 */
+    background-color: #f4f4f4;      /* 設置背景顏色 */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;        /* 水平居中 */
+    align-items: center;            /* 垂直居中 */
+    height: 100vh;                  /* 設置視口高度為100% */
+}
+
+/* 設置卡片區域 */
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;            /* 設置圓角 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加陰影 */
+}
+
+/* 設置顯示區 */
+input#display {
+    width: 250px;
+    height: 50px;
+    font-size: 24px;
+    text-align: right;             /* 文字右對齊 */
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+
+/* 設置按鈕區域 */
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 60px); /* 四列 */
+    grid-gap: 10px;
+}
+
+/* 設置每個按鈕的樣式 */
+button {
+    font-size: 20px;
+    padding: 15px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* 按鈕懸停效果 */
+button:hover {
+    background-color: #ddd;
+}
+
+/* 清除按鈕的特殊樣式 */
+button.clear {
+    background-color: #ff6666;
+    color: white;
+}
+
+/* 計算結果按鈕的特殊樣式 */
+button.equal {
+    background-color: #4caf50;
+    color: white;
+}
+
+    </style>
+</head>
+<body>
+        <!-- 卡片區域 -->
+    <div class="card" id="mainCard">
+        <div class="calculator">
+            <!-- 顯示區 -->
+            <input type="text" id="display" disabled>
+            
+            <!-- 按鈕區域 -->
+            <div class="button-grid" id="buttonGrid">
+                <!-- 按鈕會由 JS 產生 -->
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+     // 按鈕設置
+    const buttons = ['C', '', '%', '/',
+ '7', '8', '9', '*',
+ '4', '5', '6', '-',
+ '1', '2', '3', '+',
+ '', '0', '.', '='];
+
+    // 動態生成按鈕
+    buttons.forEach(button => {
+        const btn = document.createElement('button');
+        btn.textContent = button;
+        btn.addEventListener('click', () => handleButtonClick(button));
+        if (button === 'C') btn.classList.add('clear');
+        if (button === '=') btn.classList.add('equal');
+        buttonGrid.appendChild(btn);
+    });
+  // 處理按鈕點擊事件
+    function handleButtonClick(button) {
+        if (button === 'C') {
+            // 清空顯示
+            display.value = '';
+        } else if (button === '=') {
+            // 計算結果
+            try {
+                display.value = eval(display.value);
+            } catch (error) {
+                display.value = '錯誤';
+            }
+        } else {
+            // 將按鈕內容加到顯示區
+            display.value += button;
+        }}
+</script>
+</body>
+</html>

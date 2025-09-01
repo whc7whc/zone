@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>流星特效示範</title>
+  <style>
+    body {
+      background-color: #1a092d; /* 深紫背景 */
+      color: #c64c4c;
+      text-align: center;
+      padding-top: 100px;
+      font-family: sans-serif;
+    }
+    #completeBtn {
+      padding: 10px 20px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>完成任務觸發流星特效</h1>
+  <button id="completeBtn">完成任務</button>
+
+  <!-- 🌠 Canvas 流星畫布 -->
+  <canvas id="meteorCanvas" style="position:fixed; top:0; left:0; pointer-events:none; z-index:9999;"></canvas>
+
+  <!-- 🌠 流星特效腳本放這裡 -->
+  <script>
+    const canvas = document.getElementById('meteorCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // 🎨 可自訂的顏色組（用 ALPHA 當透明度 placeholder）
+    const meteorColors = [
+      'rgba(135, 206, 235, ALPHA)', // 淺藍
+      'rgba(30, 144, 255, ALPHA)',  // 深藍
+      'rgba(255, 215, 0, ALPHA)',   // 金黃
+      'rgba(221, 160, 221, ALPHA)', // 淡紫
+      'rgba(255, 255, 255, ALPHA)'  // 白色
+    ];
+
+    function createMeteor(x, y, dx, dy, length) {
+      // 隨機顏色模板
+      const colorTemplate = meteorColors[Math.floor(Math.random() * meteorColors.length)];
+      return { x, y, dx, dy, length, colorTemplate, alpha: 1 };
+    }
+
+    let meteors = [];
+
+    function spawnMeteors(count = 5) {
+      for (let i = 0; i < count; i++) {
+        const startX = Math.random() * canvas.width;
+        const startY = Math.random() * canvas.height * 0.3;
+        const dx = Math.random() * 5 + 5;
+        const dy = dx;
+        const length = Math.random() * 80 + 50;
+        meteors.push(createMeteor(startX, startY, dx, dy, length));
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = meteors.length - 1; i >= 0; i--) {
+        const m = meteors[i];
+
+        const headColor = m.colorTemplate.replace('ALPHA', m.alpha.toFixed(2));
+        const tailColor = m.colorTemplate.replace('ALPHA', '0');
+
+        ctx.beginPath();
+        const grad = ctx.createLinearGradient(m.x, m.y, m.x - m.length, m.y - m.length);
+        grad.addColorStop(0, headColor);
+        grad.addColorStop(1, tailColor);
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 6; // 可調整粗細
+        ctx.moveTo(m.x, m.y);
+        ctx.lineTo(m.x - m.length, m.y - m.length);
+        ctx.stroke();
+
+        m.x += m.dx;
+        m.y += m.dy;
+        m.alpha -= 0.02;
+
+        if (m.alpha <= 0) {
+          meteors.splice(i, 1);
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    // 點擊按鈕觸發流星效果
+    document.getElementById('completeBtn').addEventListener('click', () => {
+      spawnMeteors(8); // 產生 8 顆流星
+    });
+  </script>
+
+</body>
+</html>

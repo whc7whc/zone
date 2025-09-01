@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Calculator/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+
+    <title>Calculator</title>
+    <style>
+/* 卡片初始隱藏，並準備彈跳進來 */
+        #mainCard {
+            opacity: 0;
+            transform: scale(0.5) translateY(30px); /* 初始縮小並稍微往下移 */
+            transition: opacity 1s ease-out, transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            display: none;
+        }
+
+        #mainCard.show {
+            display: block;
+            opacity: 1;
+            transform: scale(1) translateY(0); /* 恢復正常大小並回到原來的位置 */
+            transition: opacity 1s ease-out, transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        #welcomeTitle.fade-out {
+            opacity: 0;
+            transform: scale(1.1); /* 可以加入一点缩放的效果 */
+            filter: blur(10px); /* 模糊退出 */
+            transition: opacity 2s ease-out, transform 2s ease-out, filter 2s ease-out; /* 优化过渡时间 */
+        }
+
+        /* 卡片進場的動畫：模糊進入 */
+        @keyframes blurIn {
+            0% {
+                transform: scale(0.1);
+                opacity: 0;
+                filter: blur(10px); /* 模糊 */
+            }
+            100% {
+                transform: scale(0.);
+                opacity: 1;
+                filter: blur(0); /* 去除模糊 */
+            }
+        }
+
+        #mainCard {
+            animation: blurIn 0.5s ease-in-out forwards; /* 進場的動畫持續1.5秒，平滑過渡 */
+        }
+        
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+        <!-- 主標題 -->
+<h1 class="main-title" id="welcomeTitle">
+    <span>C</span>
+    <span>A</span>
+    <span>L</span>
+    <span>C</span>
+    <span>U</span>
+    <span>L</span>
+    <span>A</span>
+    <span>T</span>
+    <span>O</span>
+    <span>R</span>
+</h1>
+
+    <!-- 卡片區域 -->
+    <div class="card" id="mainCard">
+        <div class="calculator">
+            <!-- 顯示區 -->
+            <input type="text" id="display" disabled>
+            
+            <!-- 按鈕區域 -->
+            <div class="button-grid" id="buttonGrid">
+                <!-- 按鈕會由 JS 產生 -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 當頁面載入後，先淡入 WELCOME 標題
+    window.addEventListener('load', () => {
+        welcomeTitle.classList.add('fade-in');  // 觸發淡入動畫
+    });
+
+    const audio = document.getElementById('bgAudio');
+    const mainCard = document.getElementById('mainCard');
+    const buttonGrid = document.getElementById('buttonGrid');
+    const welcomeTitle = document.getElementById('welcomeTitle');
+
+    // 取得顯示區域與按鈕區域
+    const display = document.getElementById('display');
+
+    // 按鈕設置
+    const buttons = ['C', '', '%', '/',
+ '7', '8', '9', '*',
+ '4', '5', '6', '-',
+ '1', '2', '3', '+',
+ '', '0', '.', '='];
+
+    // 動態生成按鈕
+    buttons.forEach(button => {
+        const btn = document.createElement('button');
+        btn.textContent = button;
+        btn.addEventListener('click', () => handleButtonClick(button));
+        if (button === 'C') btn.classList.add('clear');
+        if (button === '=') btn.classList.add('equal');
+        buttonGrid.appendChild(btn);
+    });
+
+    // 處理按鈕點擊事件
+    function handleButtonClick(button) {
+        if (button === 'C') {
+            // 清空顯示
+            display.value = '';
+        } else if (button === '=') {
+            // 計算結果
+            try {
+                display.value = eval(display.value);
+            } catch (error) {
+                display.value = '錯誤';
+            }
+        } else {
+            // 將按鈕內容加到顯示區
+            display.value += button;
+        }
+    }
+
+    // 過 2 秒後 WELCOME 淡出
+    setTimeout(() => {
+        welcomeTitle.classList.add('fade-out');
+    }, 1000);
+
+    // 再等 3 秒後卡片淡入
+    setTimeout(() => {
+        mainCard.classList.add('show');
+    }, 2000);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- font awesome -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+   <!-- stylesheet -->
+    <link rel="stylesheet" href="SnakeGame/Snake.css">
+    <title>Snake Game</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="score">
+            <span>Score:<span class="score-val">0</span></span>
+        </div>
+        <div class="play-board"></div>
+        <div class="btns">
+            <button onclick="changeDirection(this)" class="ArrowLeft"><i class="fa-solid fa-arrow-left"></i></button>
+            <button onclick="changeDirection(this)" class="ArrowUp"><i class="fa-solid fa-arrow-up"></i></button>
+            <button onclick="changeDirection(this)" class="ArrowDown"><i class="fa-solid fa-arrow-down"></i></button>
+            <button onclick="changeDirection(this)" class="ArrowRight"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+        <div class="game-over-box">
+            
+            <h2>Game Over</h2>
+            <p>Your score is &nbsp;<span class="game-over-score"> 0 </span> &#128293;</p>  
+            <button class="restart-btn"><i class="fa-solid fa-arrows-rotate"></i></button> 
+        </div>
+    </div>
+
+
+
+
+
+
+<!-- script file -->
+    <script src="SnakeGame/Snake.js"></script>
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>王涵溱 履歷</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #f5f0e6 0%, #e7d9c4 100%);
+      min-height: 100vh;
+    }
+
+    .resume-card {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(200, 180, 150, 0.3);
+      color: #333333;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .section-title {
+      color: #8B5A3C;
+      border-bottom: 2px solid #D4AF8C;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: #8B5A3C;
+    }
+
+    .profile-image {
+      border: 4px solid rgba(200, 180, 150, 0.4);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .profile-image:hover {
+      transform: scale(1.02);
+    }
+
+    .contact-info {
+      color: #6B5B47;
+    }
+
+    .skill-item, .cert-item, .experience-item {
+      color: #4A4A4A;
+      transition: color 0.2s ease;
+    }
+
+    .skill-item:hover, .cert-item:hover {
+      color: #8B5A3C;
+    }
+
+    .company-name {
+      color: #8B5A3C;
+      font-weight: 600;
+    }
+
+    .job-period {
+      color: #A0916B;
+      background: rgba(200, 180, 150, 0.15);
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+    }
+
+    .summary-text {
+      color: #4A4A4A;
+      line-height: 1.8;
+    }
+
+    .download-btn {
+      background: linear-gradient(135deg, #8B5A3C 0%, #A0916B 100%);
+      color: white;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(139, 90, 60, 0.3);
+    }
+
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(139, 90, 60, 0.4);
+    }
+
+    .list-item {
+      position: relative;
+      padding-left: 1.2rem;
+    }
+
+    .list-item::before {
+      content: '•';
+      color: #D4AF8C;
+      font-size: 1.2rem;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    @media print {
+      body {
+        background: white !important;
+        -webkit-print-color-adjust: exact;
+      }
+      .resume-card {
+        background: white !important;
+        border: none !important;
+        box-shadow: none !important;
+        zoom: 80%;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        box-sizing: border-box;
+      }
+      .download-btn {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="resume" class="resume-card max-w-4xl mx-auto rounded-2xl p-10 mt-8 mb-8">
+    <!-- Header -->
+    <div class="flex items-center space-x-8 mb-8">
+      <img src="Resume/0827 (中).jpg"
+           alt="大頭照"
+           class="profile-image w-40 h-40 rounded-full object-cover" />
+      <div class="flex-1">
+        <h1 class="text-4xl font-bold mb-3 text-gray-800">王涵溱</h1>
+        <div class="contact-info space-y-1 text-lg">
+       <p class="text-gray-700">台灣嘉義市｜ 電話：0986-933-313 ｜ Email：jin580809@gmail.com </p>
+         <!-- 社群連結 -->
+  <div class="mt-2 flex space-x-4">
+    <!-- GitHub -->
+    <a href="https://github.com/whc7whc" target="_blank" 
+       class="flex items-center text-amber-700 hover:underline">
+      <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.03-.02-2.02-3.2.7-3.88-1.55-3.88-1.55-.52-1.32-1.28-1.67-1.28-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.74 2.67 1.24 3.32.95.1-.74.4-1.24.73-1.53-2.56-.29-5.25-1.28-5.25-5.68 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.17.91-.25 1.88-.38 2.85-.38.97 0 1.94.13 2.85.38 2.19-1.48 3.15-1.17 3.15-1.17.62 1.59.23 2.76.11 3.05.73.8 1.18 1.82 1.18 3.07 0 4.41-2.7 5.39-5.27 5.67.41.35.77 1.03.77 2.08 0 1.5-.01 2.71-.01 3.08 0 .31.21.68.8.56C20.71 21.39 24 17.08 24 12c0-6.27-5.23-11.5-12-11.5z"/>
+      </svg>
+      GitHub
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/%E6%B6%B5%E6%BA%B1-%E7%8E%8B-579769187/?originalSubdomain=tw" target="_blank" 
+       class="flex items-center text-blue-700 hover:underline">
+      <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M4.98 3.5C3.34 3.5 2 4.84 2 6.5S3.34 9.5 4.98 9.5s2.98-1.34 2.98-3s-1.34-3-2.98-3zM2.4 21.5h5.16V10H2.4v11.5zM9.5 10v11.5h5.16V15c0-3 3.5-3.24 3.5 0v6.5h5.16V14.3c0-6-6.34-5.78-8.66-2.83V10H9.5z"/>
+      </svg>
+      LinkedIn
+    </a>
+  </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <section class="mb-8">
+      <h2 class="section-title text-2xl font-semibold pb-2 mb-4">個人簡述</h2>
+      <p class="list-disc list-inside ml-4 mt-1 space-y-1">
+        我是一位樂於學習、勇於嘗試新事物的工作者，擁有觀光、保險、醫療與行動銷售等多元產業背景，
+        具備跨部門溝通經驗與現場解決問題能力。為了實現數位轉職的目標，我完成資展國際全端工程師養成課程，
+        系統性學習前後端技術並參與多次專題開發，建立了系統架構理解與解決問題的思維。
+      </p>
+    </section>
+
+    <!-- Strengths -->
+    <section class="mb-8">
+      <h2 class="section-title text-2xl font-semibold pb-2 mb-4">專長</h2>
+      <div class="list-disc list-inside ml-4 mt-1 space-y-1">
+        <div class="list-item skill-item">跨領域經驗整合：具備多元產業背景，能快速適應並靈活運用所學</div>
+        <div class="list-item skill-item">溝通與協作能力：擁有跨部門及跨文化溝通經驗，有效推動團隊合作</div>
+        <div class="list-item skill-item">數據導向思維：熟悉需求分析與市場觀察，以數據支撐決策</div>
+        <div class="list-item skill-item">現場應變與問題解決：多年第一線經驗，能在高壓環境下快速找到解決方案</div>
+        <div class="list-item skill-item">自我學習與成長動能：勇於嘗試新事物，持續精進專業技能並運用於實務</div>
+      </div>
+    </section>
+<!-- Skills -->
+<section class="mb-8">
+  <h2 class="section-title text-2xl font-semibold pb-2 mb-4">專業技能</h2>
+  <div class="list-disc list-inside ml-4 mt-1 space-y-1"">
+    
+    <div>
+      <strong>前端技術：</strong>
+      jQuery、Bootstrap、Vue.js、AJAX、RESTful API
+    </div>
+
+    <div>
+      <strong>後端技術：</strong>
+      ASP.NET MVC、.NET Framework、.NET Core、C#、Web API
+    </div>
+
+    <div>
+      <strong>資料庫管理：</strong>
+      SQL Server
+    </div>
+
+    <div>
+      <strong>版本控制工具：</strong>
+      Git、GitHub
+    </div>
+
+    <div>
+      <strong>語言能力：</strong>
+      中文（母語）、英文（普通）、日文（JLPT N3）
+    </div>
+    
+  </div>
+</section>
+
+    <!-- Certificates -->
+    <section class="mb-8">
+      <h2 class="section-title text-2xl font-semibold pb-2 mb-4">證照</h2>
+      <div class="list-disc list-inside ml-4 mt-1 space-y-1">
+        <div class="list-item cert-item">RYS 200小時瑜珈教師認證（2024）</div>
+        <div class="list-item cert-item">外語領隊人員證照（2020，未完成實習）</div>
+        <div class="list-item cert-item">人身保險、財產保險、投資型保險商品、外幣收付非投資型保險商品業務員證照（2020）</div>
+        <div class="list-item cert-item">JLPT 日語能力測驗 N3（2017）</div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="mb-8">
+      <h2 class="section-title text-2xl font-semibold pb-2 mb-4">教育背景</h2>
+      <p class="list-disc list-inside ml-4 mt-1 space-y-1">僑光科技大學 — 觀光與休閒事業管理系 (2013/09 – 2017/06)</p>
+    </section>
+
+    <!-- Experience -->
+    <section class="mb-8">
+      <h2 class="section-title text-2xl font-semibold pb-2 mb-4">工作經驗</h2>
+      <div class="space-y-8">
+        
+        <div class="experience-item">
+          <div class="flex items-center justify-between mb-3">
+            <span class="company-name text-xl">元發休閒服飾 — 自營通路銷售員（台灣中南部全區）</span>
+            <span class="job-period">2021/09 - 2025/02</span>
+          </div>
+          <div class="list-disc list-inside ml-4 mt-1 space-y-1">
+            <div class="list-item">獨立經營流動攤位，負責銷售、顧客服務與現場管理，具備快速成交及人際互動能力。</div>
+            <div class="list-item">靈活應對不同市場與客群，熟悉商品補貨、現金流控管及行動銷售策略。</div>
+            <div class="list-item">具備高體能與應變力，能勝任高壓、多變且自主性強的工作環境。</div>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="flex items-center justify-between mb-3">
+            <span class="company-name text-xl">國泰人壽 — 保險業務員（台灣中南部全區）</span>
+            <span class="job-period">2020/09 - 2021/08</span>
+          </div>
+          <div class="list-disc list-inside ml-4 mt-1 space-y-1">
+            <div class="list-item">精準分析客戶財務狀況，提供量身訂製的壽險、醫療及投資型保險解決方案。</div>
+            <div class="list-item">積極拓展新客戶，達成並超越銷售目標，提升保單簽訂率與業績表現。</div>
+            <div class="list-item">熟練保單健檢與跨部門協作，優化客戶體驗及服務流程。</div>
+            <div class="list-item">運用數據驅動銷售決策，持續追蹤市場趨勢及產品競爭力。</div>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="flex items-center justify-between mb-3">
+            <span class="company-name text-xl">Ashdale Clinic — Clinic Assistant（愛爾蘭科克）</span>
+            <span class="job-period">2019/08 - 2020/03</span>
+          </div>
+          <div class="list-disc list-inside ml-4 mt-1 space-y-1">
+            <div class="list-item">協助中醫師進行針灸療程及診療支援，確保診所運作流程高效順暢。</div>
+            <div class="list-item">於全英語專業環境下與患者溝通，具備跨文化溝通與協調能力。</div>
+            <div class="list-item">負責診療器材管理與環境衛生維護，維持高標準醫療安全及患者舒適度。</div>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="flex items-center justify-between mb-3">
+            <span class="company-name text-xl">台灣之星 — 業務代表（台灣嘉義）</span>
+            <span class="job-period">2017/08 - 2019/05</span>
+          </div>
+          <div class="list-disc list-inside ml-4 mt-1 space-y-1">
+            <div class="list-item">制定並執行銷售策略，成功達成且持續突破業績目標。</div>
+            <div class="list-item">積極蒐集市場及競爭對手情報，提出建設性意見促進產品優化。</div>
+            <div class="list-item">建立並維護長期客戶關係，提高客戶忠誠度與品牌信任度。</div>
+            <div class="list-item">主動發掘潛在客戶，開拓銷售渠道，提升市場佔有率。</div>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="flex items-center justify-between mb-3">
+            <span class="company-name text-xl">宇奈月ホテル（株）— 實習生（日本富山）</span>
+            <span class="job-period">2016/07 - 2017/06</span>
+          </div>
+          <div class="list-disc list-inside ml-4 mt-1 space-y-1">
+            <div class="list-item">於多元文化團隊中發揮多工處理能力，靈活應對各類突發事件。</div>
+            <div class="list-item">主動支援前台迎賓與客戶諮詢，協助提供指引與解說，打造高效且貼心的服務體驗。</div>
+            <div class="list-item">培養跨部門協作與服務敏感度，快速融入團隊並促進工作流程優化。</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- PDF Download Button -->
+  <div class="flex justify-center mb-8">
+    <button onclick="downloadPDF()" class="download-btn px-8 py-3 rounded-full font-medium text-lg transition-all duration-300">
+      📄 下載 PDF 履歷
+    </button>
+  </div>
+
+  <script>
+    function downloadPDF() {
+  const element = document.getElementById('resume');
+  const width = element.offsetWidth;
+  const height = Math.ceil(element.offsetHeight * 1.05); // 放大5%避免截斷
+
+  const opt = {
+    margin:       0,
+    filename:     '王涵溱_履歷.pdf',
+    html2canvas:  { scale: 2, useCORS: true },
+    jsPDF:        { unit: 'px', format: [width, height], orientation: 'portrait' }
+  };
+
+  html2pdf().from(element).set(opt).save();
+}
+
+  </script>
+</body>
+</html>

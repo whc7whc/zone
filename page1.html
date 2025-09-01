@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="1/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+
+    <title>Document</title>
+    <style>
+/* 卡片初始隱藏，並準備彈跳進來 */
+        /* 卡片初始隱藏，並準備彈跳進來 */
+        #mainCard {
+            opacity: 0;
+            transform: scale(0.5) translateY(30px); /* 初始縮小並稍微往下移 */
+            transition: opacity 1s ease-out, transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            display: none;
+        }
+
+        #mainCard.show {
+            display: block;
+            opacity: 1;
+            transform: scale(1) translateY(0); /* 恢復正常大小並回到原來的位置 */
+            transition: opacity 1s ease-out, transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        /* 讓 WELCOME 標題淡入時的過渡時間保持一致 */
+        #welcomeTitle.fade-in {
+            opacity: 1;
+            transition: opacity 1.5s ease-out; /* 淡入動畫縮短為1.5秒 */
+        }
+
+        #welcomeTitle.fade-out {
+            opacity: 0;
+            transform: scale(1.1); /* 可以加入一点缩放的效果 */
+            filter: blur(10px); /* 模糊退出 */
+            transition: opacity 2s ease-out, transform 2s ease-out, filter 2s ease-out; /* 优化过渡时间 */
+        }
+
+        /* 卡片進場的動畫：模糊進入 */
+        @keyframes blurIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+                filter: blur(10px); /* 模糊 */
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+                filter: blur(0); /* 去除模糊 */
+            }
+        }
+
+        #mainCard {
+            animation: blurIn 1.5s ease-in-out forwards; /* 進場的動畫持續1.5秒，平滑過渡 */
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+        <!-- 主標題 -->
+   <h1 class="main-title" id="welcomeTitle">
+        <span>W</span>
+        <span>E</span>
+        <span>L</span>
+        <span>C</span>
+        <span>O</span>
+        <span>M</span>
+        <span>E</span>
+        <span>&nbsp;</span>
+        <span>T</span>
+        <span>O</span>
+        <span>&nbsp;</span>
+        <span>M</span>
+        <span>Y</span>
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+        <span>P</span>
+        <span>R</span>
+        <span>O</span>
+        <span>J</span>
+        <span>E</span>
+        <span>C</span>
+        <span>T</span>
+    </h1>
+
+    <!-- 背景音樂 -->
+    <audio id="bgAudio" muted autoplay loop>
+      <source src="/DayOne/bird.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <!-- 卡片區域 -->
+    <div class="card" id="mainCard">
+      <div class="button-grid" id="buttonGrid"></div>
+      <!-- 按鈕會由 JS 產生 -->
+    </div>
+</div>
+
+<script>
+  window.addEventListener('load', () => {
+  welcomeTitle.classList.add('fade-in');  // 頁面載入時淡入 welcome
+});
+
+const audio = document.getElementById('bgAudio');
+const mainCard = document.getElementById('mainCard');
+const buttonGrid = document.getElementById('buttonGrid');
+const welcomeTitle = document.getElementById('welcomeTitle');
+
+// 自訂按鈕名稱與對應的頁面
+const buttons = [
+  { name: "About Me", link: "about.html" },
+  { name: "Gallery", link: "gallery.html" },
+  { name: "Contact", link: "contact.html" },
+  { name: "Projects", link: "projects.html" },
+  { name: "Blog", link: "blog.html" },
+];
+
+// 建立按鈕
+buttons.forEach(btnInfo => {
+  const btn = document.createElement('button');
+  btn.textContent = btnInfo.name;
+  btn.addEventListener('click', () => {
+    window.location.href = btnInfo.link;
+  });
+  buttonGrid.appendChild(btn);
+});
+
+// 使用者點擊畫面後觸發後續動作
+let hasInteracted = false;
+
+document.body.addEventListener('click', () => {
+  if (hasInteracted) return;
+  hasInteracted = true;
+
+  // 播放背景音樂
+  if (audio.muted) {
+    audio.muted = false;
+    audio.play();
+  }
+
+  // 2 秒後歡迎標題淡出
+  setTimeout(() => {
+    welcomeTitle.classList.add('fade-out');
+  }, 1000);
+
+  // 3 秒後主卡片淡入
+  setTimeout(() => {
+    mainCard.classList.add('show');
+  }, 3000);
+});
+
+  
+  </script>
+
+</body>
+</html>
