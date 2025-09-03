@@ -123,6 +123,39 @@
         display: none;
       }
     }
+    @media (max-width: 768px) {
+  .header-flex {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center;
+  }
+  .profile-image {
+    width: 120px !important;
+    height: 120px !important;
+  }
+  body {
+    font-size: 14px !important;
+  }
+  h1 {
+    font-size: 2rem !important;
+  }
+  h2 {
+    font-size: 1.25rem !important;
+  }
+  .resume-card {
+    padding: 1.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-info .flex {
+    flex-wrap: wrap !important;
+  }
+  .contact-info .flex > a {
+    flex: 1 1 100% !important;
+    margin-bottom: 0.5rem !important;
+  }
+}
   </style>
 </head>
 <body>
@@ -135,7 +168,9 @@
       <div class="flex-1">
         <h1 class="text-4xl font-bold mb-3 text-gray-800">王涵溱</h1>
         <div class="contact-info space-y-1 text-lg">
-       <p class="text-gray-700">台灣嘉義市｜ 電話：0986-933-313 ｜ Email：jin580809@gmail.com </p>
+       <p class="text-gray-700">台灣嘉義市 </p>
+         <p class="text-gray-700">電話:0986-933-313 </p>
+           <p class="text-gray-700">信箱:jin580809@gmail.com </p>
          <!-- 社群連結 -->
   <div class="mt-2 flex space-x-4">
     <!-- GitHub -->

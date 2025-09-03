@@ -47,7 +47,48 @@
         #mainCard {
             animation: blurIn 0.5s ease-in-out forwards; /* 進場的動畫持續1.5秒，平滑過渡 */
         }
-        
+        @media (max-width: 570px) {
+  .container {
+    padding: 10px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+
+  .calculator {
+    width: 100%;
+  }
+
+  #display {
+    font-size: 1.8rem;
+    padding: 12px 15px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .button-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .button-grid button {
+    font-size: 1.2rem;
+    padding: 15px 0;
+    border-radius: 8px;
+  }
+
+  /* 清除、等號按鈕特別樣式也縮小 */
+  button.clear, button.equal {
+    font-size: 1.2rem;
+  }
+}
+
     </style>
 </head>
 
